@@ -88,7 +88,7 @@ export class BlockchainSimulada {
     this.listaRevocacion.push(revocacion);
     const bloque = this._agregarBloque({
       tipo: "REVOCACION",
-      hashCredencial: revocacion.hashCredencial,
+      credencialId: revocacion.credencialId,
       revocadaPor: revocacion.revocadaPor,
     });
     return bloque;

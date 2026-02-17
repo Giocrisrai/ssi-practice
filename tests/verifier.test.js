@@ -153,7 +153,7 @@ describe("Verificación Criptográfica", () => {
   describe("verificarPresentacion() - credencial revocada", () => {
     it("debe detectar una credencial revocada", () => {
       const listaRevocacion = [
-        { hashCredencial: credencialVerificable.id },
+        { credencialId: credencialVerificable.id },
       ];
 
       const resultados = verificarPresentacion(

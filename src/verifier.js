@@ -11,7 +11,6 @@
  * Solo necesita la clave pública del emisor (disponible en blockchain).
  */
 
-import crypto from "node:crypto";
 import { verificarFirma } from "./crypto-utils.js";
 
 /**
@@ -51,19 +50,19 @@ export function verificarPresentacion(
   if (!firmaValidaTitular) resultados.esValida = false;
 
   // 2. Verificar la firma del emisor en la credencial
+  //
+  // NOTA EDUCATIVA: En una implementación real (con bibliotecas como did-jwt
+  // o vc-js), aquí se verificaría la firma del emisor contra la credencial
+  // original completa. En esta simulación simplificada, la presentación
+  // contiene una credencial derivada (con atributos ocultos), por lo que la
+  // firma original del emisor no coincidiría con los datos modificados.
+  // Por eso marcamos este paso como "simulado". La firma del TITULAR sí se
+  // verifica criptográficamente de forma real (paso 1 arriba).
   for (const cred of presentacion.verifiableCredential) {
-    const proofOriginal = cred._proofOriginal || cred.proof;
-    const credSinProof = { ...cred };
-    delete credSinProof.proof;
-    delete credSinProof._proofOriginal;
-    delete credSinProof.credentialSubject;
-
-    // Nota: En una implementación real, se verificaría contra la credencial
-    // original completa. Aquí simplificamos para fines educativos.
     resultados.verificaciones.push({
       paso: "Firma del emisor",
       resultado: "VERIFICADA (simulado)",
-      descripcion: `Credencial emitida por ${cred.issuer}`,
+      descripcion: `Credencial emitida por ${cred.issuer} (ver nota educativa en verifier.js)`,
     });
 
     // 3. Verificar expiración
@@ -83,7 +82,7 @@ export function verificarPresentacion(
 
     // 4. Verificar que no esté revocada
     const estaRevocada = listaRevocacion.some(
-      (r) => r.hashCredencial === cred.id
+      (r) => r.credencialId === cred.id
     );
 
     resultados.verificaciones.push({

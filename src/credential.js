@@ -87,10 +87,14 @@ export function emitirCredencial(
 /**
  * Revoca una credencial. En un sistema real, esto se registraría en blockchain
  * o en una lista de revocación publicada por el emisor.
+ *
+ * @param {string} credencialId - El ID de la credencial (urn:uuid:...)
+ * @param {object} emisor - La entidad emisora que revoca
+ * @param {string} razon - Motivo de la revocación
  */
-export function revocarCredencial(hashCredencial, emisor, razon) {
+export function revocarCredencial(credencialId, emisor, razon) {
   return {
-    hashCredencial,
+    credencialId,
     revocadaPor: emisor.did,
     razon,
     timestamp: new Date().toISOString(),

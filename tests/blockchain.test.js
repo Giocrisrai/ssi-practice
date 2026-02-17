@@ -105,7 +105,7 @@ describe("Blockchain Simulada", () => {
     it("debe registrar una revocación", () => {
       const bc = new BlockchainSimulada();
       const revocacion = {
-        hashCredencial: "abc123",
+        credencialId: "urn:uuid:abc-123",
         revocadaPor: "did:example:emisor",
         razon: "Datos incorrectos",
         timestamp: new Date().toISOString(),

@@ -127,10 +127,10 @@ describe("Verifiable Credentials", () => {
       );
 
       const revocacion = revocarCredencial(
-        resultado.hashCredencial, emisor, "Datos incorrectos"
+        resultado.credencialVerificable.id, emisor, "Datos incorrectos"
       );
 
-      assert.equal(revocacion.hashCredencial, resultado.hashCredencial);
+      assert.equal(revocacion.credencialId, resultado.credencialVerificable.id);
       assert.equal(revocacion.revocadaPor, emisor.did);
       assert.equal(revocacion.razon, "Datos incorrectos");
       assert.ok(revocacion.timestamp);

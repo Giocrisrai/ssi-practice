@@ -34,7 +34,7 @@ blockchain.registrarDID(maria.registroBlockchain);
 blockchain.registrarDID(registroCivil.registroBlockchain);
 blockchain.registrarDID(arrendadora.registroBlockchain);
 
-const { credencialVerificable } = emitirCredencial(
+const resultado = emitirCredencial(
   registroCivil,
   maria.did,
   "CedulaDeIdentidad",
@@ -49,13 +49,8 @@ const { credencialVerificable } = emitirCredencial(
   }
 );
 
-blockchain.anclarCredencial({
-  hashCredencial: credencialVerificable.id,
-  emisorDID: registroCivil.did,
-  titularDID: maria.did,
-  tipo: "CedulaDeIdentidad",
-  timestamp: new Date().toISOString(),
-});
+const { credencialVerificable } = resultado;
+blockchain.anclarCredencial(resultado.registroBlockchain);
 
 const presentacion = crearPresentacion(
   maria,

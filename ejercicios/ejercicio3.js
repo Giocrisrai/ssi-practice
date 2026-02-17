@@ -63,8 +63,11 @@ const blockchain = new BlockchainSimulada();
 // ...
 
 // TODO: Paso 4 - Revocar la credencial
+// Nota: revocarCredencial recibe el ID de la credencial (credencialVerificable.id),
+// NO el hashCredencial. El verificador compara contra el ID de la credencial.
+//
 // const revocacion = revocarCredencial(
-//   credencial.hashCredencial,
+//   credencial.credencialVerificable.id,
 //   registroCivil,
 //   "Datos incorrectos - error administrativo"
 // );
@@ -73,9 +76,6 @@ const blockchain = new BlockchainSimulada();
 
 // TODO: Paso 5 - Intentar verificar DESPUÉS de revocar
 // console.log("\n=== VERIFICACIÓN DESPUÉS DE REVOCACIÓN ===");
-// Nota: Para que la revocación funcione correctamente en la verificación,
-// asegúrate de que el hashCredencial en la lista de revocación coincida
-// con el ID de la credencial en la presentación.
 
 // TODO: Paso 6 - Comparar resultados e imprimir conclusiones
 
