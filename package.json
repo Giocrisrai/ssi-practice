@@ -1,0 +1,21 @@
+{
+  "name": "ssi-practice",
+  "version": "1.0.0",
+  "description": "Práctica de Identidad Soberana (SSI): DIDs, Verifiable Credentials y Verifiable Presentations",
+  "type": "module",
+  "scripts": {
+    "demo": "node demo.js",
+    "step1": "node src/01-crear-did.js",
+    "step2": "node src/02-emitir-credencial.js",
+    "step3": "node src/03-crear-presentacion.js",
+    "step4": "node src/04-verificar-credencial.js",
+    "ejercicio1": "node ejercicios/ejercicio1.js",
+    "ejercicio2": "node ejercicios/ejercicio2.js",
+    "ejercicio3": "node ejercicios/ejercicio3.js"
+  },
+  "keywords": ["ssi", "did", "verifiable-credentials", "blockchain", "identity"],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
