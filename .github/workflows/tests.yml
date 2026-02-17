@@ -1,0 +1,39 @@
+name: Tests SSI Practice
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  # Permite ejecutar manualmente desde la pestaña Actions
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18, 20, 22]
+
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Ejecutar demo completo
+        run: node demo.js
+
+      - name: Ejecutar tests unitarios y de integración
+        run: node --test tests/*.test.js
+
+      - name: Ejecutar pasos individuales
+        run: |
+          node src/01-crear-did.js
+          node src/02-emitir-credencial.js
+          node src/03-crear-presentacion.js
+          node src/04-verificar-credencial.js

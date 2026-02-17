@@ -23,11 +23,11 @@ Al ejecutar y modificar este código, comprenderás:
 ## Instalación
 
 ```bash
-git clone <URL-del-repositorio>
+git clone https://github.com/Giocrisrai/ssi-practice.git
 cd ssi-practice
 ```
 
-No necesitas `npm install` — el proyecto usa solo la librería estándar de Node.js.
+No necesitas `npm install` — el proyecto usa solo la librería estándar de Node.js (cero dependencias).
 
 ## Estructura del Proyecto
 
@@ -49,6 +49,15 @@ ssi-practice/
 │   ├── ejercicio1.js                # Emitir título universitario
 │   ├── ejercicio2.js                # Presentación selectiva para empleo
 │   └── ejercicio3.js                # Revocación + análisis regulatorio
+├── tests/
+│   ├── crypto-utils.test.js         # Tests de criptografía
+│   ├── did.test.js                  # Tests de DIDs
+│   ├── credential.test.js           # Tests de credenciales
+│   ├── presentation.test.js         # Tests de presentaciones
+│   ├── verifier.test.js             # Tests de verificación
+│   ├── blockchain.test.js           # Tests de blockchain
+│   └── integration.test.js          # Tests de integración (flujo completo)
+├── .github/workflows/tests.yml      # CI: tests automáticos en cada push
 ├── package.json
 └── README.md
 ```
@@ -77,6 +86,81 @@ node ejercicios/ejercicio1.js
 node ejercicios/ejercicio2.js
 node ejercicios/ejercicio3.js
 ```
+
+## Tests
+
+El proyecto incluye **63 tests** que validan todo el sistema. Los tests corren automáticamente en GitHub Actions al hacer push o pull request.
+
+### Ejecutar todos los tests
+
+```bash
+npm test
+```
+
+### Ejecutar tests por módulo
+
+```bash
+npm run test:crypto         # Criptografía (firma, hash, claves)
+npm run test:did            # Identificadores Descentralizados
+npm run test:credential     # Verifiable Credentials
+npm run test:presentation   # Presentaciones y divulgación selectiva
+npm run test:verifier       # Verificación criptográfica
+npm run test:blockchain     # Simulador de blockchain
+npm run test:integration    # Flujo completo SSI
+```
+
+### Tests en GitHub Actions (CI)
+
+Cada vez que hagas **push** o abras un **Pull Request**, GitHub ejecutará automáticamente:
+- Los 63 tests unitarios y de integración
+- El demo completo
+- Los 4 pasos individuales
+- En Node.js 18, 20 y 22
+
+Verás un check verde si todo pasa, o rojo si algo falla.
+
+## Cómo Trabajar con este Repositorio (para estudiantes)
+
+### 1. Hacer Fork
+
+Haz clic en **Fork** en la esquina superior derecha del repositorio en GitHub. Esto crea una copia en tu cuenta.
+
+### 2. Clonar tu Fork
+
+```bash
+git clone https://github.com/TU-USUARIO/ssi-practice.git
+cd ssi-practice
+```
+
+### 3. Crear una rama para tu trabajo
+
+```bash
+git checkout -b mi-solucion
+```
+
+### 4. Resolver los ejercicios
+
+Abre los archivos en `ejercicios/`, descomenta el código y completa los `TODO`.
+
+### 5. Verificar con los tests
+
+```bash
+npm test
+```
+
+### 6. Hacer commit y push
+
+```bash
+git add .
+git commit -m "Resuelvo ejercicios 1, 2 y 3"
+git push origin mi-solucion
+```
+
+### 7. Crear un Pull Request (opcional)
+
+Desde GitHub, crea un PR de tu rama `mi-solucion` hacia `main` de tu fork. Los tests de CI correrán automáticamente.
+
+---
 
 ## Guía de la Práctica
 
