@@ -11,6 +11,7 @@
  * - Verificador (Verifier): Quien necesita verificar la credencial (ej: arrendadora)
  */
 
+import crypto from "node:crypto";
 import { firmar, generarHash } from "./crypto-utils.js";
 
 /**
