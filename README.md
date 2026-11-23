@@ -1,5 +1,7 @@
 # Recurso 3.3.2 – Práctica de Identidad Soberana (SSI)
 
+> **English summary.** Self-sovereign identity (SSI) practice: DIDs, Verifiable Credentials and Verifiable Presentations. The rest of this document is in Spanish.
+
 ## Descripción
 
 Este repositorio contiene código educativo que simula el flujo completo de **Identidad Soberana (Self-Sovereign Identity - SSI)**:
